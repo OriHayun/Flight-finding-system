@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Control center</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="../css/magnific-popup.css" rel="stylesheet" />
+    <link href="../css/aos.css" rel="stylesheet" />
+    <link href="../css/ionicons.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="../css/jquery.timepicker.css" rel="stylesheet" />
+    <link href="../css/flaticon.css" rel="stylesheet" />
+    <link href="../css/icomoon.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a href="index.html"><img id="logoImage" src="../images/logo.jpg" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="#controlCenter" class="nav-link openOrderDiv">Order table</a></li>
+                    <li class="nav-item"><a href="#controlCenter" class="nav-link openFavoriteDiv">Favorite table</a></li>
+                    <li class="nav-item"><a href="#controlCenter" class="nav-link openSalesDiv">Sales</a></li>
+                    <li class="nav-item cta"><a href="index.html" class="nav-link">&larr; &nbsp; Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <h1 class="mb-3 bread">Control center</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pb contact-section">
+        <div class="container">
+            <div class="row d-flex contact-info">
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center openOrderDiv">
+                            <span style="font-size:18px;cursor:pointer">Order<br />table</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center openFavoriteDiv">
+                            <span style="font-size:18px;cursor:pointer">Favorite<br />table</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div id="sales" style="cursor:pointer;font-size:18px;" class="icon d-flex align-items-center justify-content-center openSalesDiv">
+                            <span style="font-size:18px;">Sales</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center openAddAdminDiv">
+                            <span style="font-size:18px;cursor:pointer">Add<br />admin<br />+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+        <div id="controlCenter" class="container">
+
+            <div id="OrderDiv">
+                <table id="orderTable" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>FLight date</th>
+                            <th>Main mail</th>
+                            <th>Airline</th>
+                            <th>City from</th>
+                            <th>City to</th>
+                            <th>Number of tickets</th>
+                            <th>Passnger</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="FavoriteDiv">
+                <table id="favoriteTable" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Airline</th>
+                            <th>City from</th>
+                            <th>City to</th>
+                            <th>Number of likes</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="SalesDiv">
+                <button class="btn btn-info newBtn">add new discount</button>
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Airline</th>
+                            <th>City from</th>
+                            <th>City to</th>
+                            <th>Discount</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="newSale">
+                    <form id="newSaleForm">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-3">
+                                <label>Airline</label>
+                                <input type="text" class="form-control" id="airlineInput"
+                                       placeholder="Enter the airline code" required pattern="[A-Za-z]{2}">
+                            </div>
+
+
+                            <div class="form-group col-sm-3">
+                                <label>City from</label>
+                                <input type="text" class="form-control" id="cityFromInput" placeholder="Enter city from name" required>
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>City to</label>
+                                <input type="text" class="form-control" id="cityToInput" placeholder="Enter city to name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="form-group col-sm-3">
+                                <label>Discount</label>
+                                <input type="number" class="form-control" id="discountInput" placeholder="Enter discount" required min="0" max="100" >
+                            </div>
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg" id="AddBTN">Add</button>
+                        <input type="button" class="btn btn-warning btn-lg" id="cancelAddBTN" value="Cancel" />
+                    </form>
+                </div>
+                <div id="editSale">
+                    <form id="editSaleForm">
+
+                        <div class="form-group row">
+                            <div class="form-group col-sm-3">
+                                <label>ID</label>
+                                <input type="text" class="form-control" id="id" required disabled style="opacity:0.3;">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Discount</label>
+                                <input type="text" class="form-control" id="editDiscountInput" placeholder="Enter discount" required>
+                            </div>
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg" id="saveBTN">Save</button>
+                        <input type="button" class="btn btn-warning btn-lg" id="cancelSaveBTN" value="Cancel" />
+                    </form>
+                </div>
+            </div>
+            <div id="AddAdminDiv">
+                <form id="addNewAdmin" action="">
+                    <input id="UserNameInput" type="text" pattern="[A-Za-z]+" placeholder="User name" required /><br />
+                    <input id="UserPasswordInput" type="tel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" required /><br />
+                    <button>Add</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="ftco-footer bg-bottom" style="background-image: url(../images/footer-bg.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Hayun's Group &reg;
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../Scripts/popper.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery.easing.1.3.js"></script>
+    <script src="../Scripts/jquery.waypoints.min.js"></script>
+    <script src="../Scripts/jquery.stellar.min.js"></script>
+    <script src="../Scripts/owl.carousel.min.js"></script>
+    <script src="../Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="../Scripts/aos.js"></script>
+    <script src="../Scripts/jquery.animateNumber.min.js"></script>
+    <script src="../Scripts/bootstrap-datepicker.js"></script>
+    <script src="../Scripts/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false" />
+    <script src="../Scripts/google-map.js"></script>
+    <script src="../Scripts/main.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+
+    <script>
+        var salesList = null;
+        $('#OrderDiv').hide();
+        $('#FavoriteDiv').hide();
+        $('#SalesDiv').hide();
+        $('#AddAdminDiv').hide();
+        $('#newSale').hide();
+        $('#editSale').hide();
+
+        $(document).on("click", ".openOrderDiv", openOrderDiv)
+        $(document).on("click", ".openFavoriteDiv", openFavoriteDiv)
+        $(document).on("click", ".openSalesDiv", openSalesDiv)
+        $(document).on("click", ".openAddAdminDiv", openAddAdminDiv)
+
+        $(document).on("click", ".newBtn", newBtnFunction);
+        $(document).on("click", ".editBtn", editBtnFunction);
+        $(document).on("click", ".deleteBtn", deleteBtnFunction);
+
+        $('#editSaleForm').submit(updateDiscountTable)
+        $('#newSaleForm').submit(addNewDiscount)
+        $(document).on("click", "#cancelSaveBTN", function () { $('#editSale').hide(); })
+        $(document).on("click", "#cancelAddBTN", function () { $('#newSale').hide(); })
+
+
+
+        //----------------------------------------------------------------------//
+        function openOrderDiv() {
+            $('#FavoriteDiv').hide();
+            $('#SalesDiv').hide();
+            $('#AddAdminDiv').hide();
+            $('#OrderDiv').show();
+            ajaxCall("GET", "../api/order", "", getOrderTableSuccessCB, getOrderTableErorrCB)
+        }
+
+        function getOrderTableSuccessCB(orderList) {
+            if (typeof (orderTbl) !== 'undefined') {
+                return;
+            }
+            try {
+                orderTbl = $('#orderTable').DataTable({
+                    data: orderList,
+                    pageLength: 5,
+                    columns: [
+                        { data: "FlightDate" },
+                        { data: "MainMail" },
+                        { data: "Airline" },
+                        { data: "CityFrom" },
+                        { data: "CityTo" },
+                        {
+                            render: function (data, type, row, meta) {
+                                let passngerList = row.PassngerNames;
+                                passngerList = passngerList.split(',');
+                                return passngerList.length;
+
+                            }
+                        },
+                        { data: "PassngerNames" }
+                    ],
+                });
+
+            } catch (err) {
+                alert(err);
+            }
+        }
+        function getOrderTableErorrCB(err) {
+            console.log(err);
+        }
+
+        //----------------------------------------------------------------------//
+
+        function openFavoriteDiv() {
+            $('#OrderDiv').hide();
+            $('#SalesDiv').hide();
+            $('#AddAdminDiv').hide();
+            $('#FavoriteDiv').show();
+            ajaxCall("GET", "../api/favorite", "", getfavoriteTableSuccessCB, getfavoriteTableErorrCB)
+        }
+
+        function getfavoriteTableSuccessCB(favorieList) {
+            if (typeof (favoriteTbl) !== 'undefined') {
+                return;
+            }
+            try {
+                favoriteTbl = $('#favoriteTable').DataTable({
+                    data: favorieList,
+                    pageLength: 5,
+                    columns: [
+                        { data: "Airline" },
+                        { data: "CityFrom" },
+                        { data: "CityTo" },
+                        { data: "NumOfLike" }
+                    ],
+                });
+
+            } catch (err) {
+                alert(err);
+            }
+        }
+        function getfavoriteTableErorrCB(err) {
+            console.log(err);
+        }
+        //----------------------------------------------------------------------//
+
+        function openSalesDiv() {
+            $('#OrderDiv').hide();
+            $('#FavoriteDiv').hide();
+            $('#AddAdminDiv').hide();
+            $('#SalesDiv').show();
+
+            ajaxCall("GET", "../api/sales", "", discountTableSuccessCB, discountTableErorrCB)
+        }
+
+        function discountTableSuccessCB(discountList) {
+            salesList = discountList;
+            counter = 0;
+            if (typeof (discountTbl) !== 'undefined') {
+                return;
+            }
+            try {
+                discountTbl = $('#salesTable').DataTable({
+                    data: salesList,
+                    pageLength: 5,
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+                                editBtn = "<button type='button' id=" + row.Id + " class = 'editBtn btn btn-warning' data-discountId=" + counter + "> Edit </button>";
+                                deleteBtn = "<button type='button' id=" + row.Id + " class = 'deleteBtn btn btn-danger' data-discountId=" + counter + "> Delete </button>";
+                                counter++;
+                                return editBtn + " " + deleteBtn;
+                            }
+                        },
+                        { data: "Airline" },
+                        { data: "CityFrom" },
+                        { data: "CityTo" },
+                        { data: "Discount" }
+                    ],
+                });
+
+            }
+
+            catch (err) {
+                alert(err);
+            }
+        }
+        function discountTableErorrCB(err) {
+            console.log(err);
+            alert("Something went wrong");
+        }
+
+        function newBtnFunction() {
+            $('#editSale').hide();
+            $('#newSale').show();
+        }
+
+        function addNewDiscount(e) {
+            e.preventDefault();
+            newDiscount = {
+                "Airline": $('#airlineInput').val(),
+                "CityFrom": $('#cityFromInput').val(),
+                "CityTo": $('#cityToInput').val(),
+                "Discount": $('#discountInput').val()
+            }
+            ajaxCall("POST", "../api/sales", JSON.stringify(newDiscount), newDiscountSuccessCB, newDiscountErorrCB);
+        }
+
+        function newDiscountSuccessCB(updatedDiscountList) {
+            alert("Post success");
+            $('#newSale').hide();
+            redrawTable(discountTbl, updatedDiscountList);
+
+        }
+
+        function newDiscountErorrCB() {
+            alert('Post not success');
+        }
+
+
+        function editBtnFunction() {
+            let selectedRow = this.getAttribute('data-discountId');
+            $('#editDiscountInput').val(salesList[selectedRow].Discount);
+            $('#id').val(this.getAttribute('id'));
+            $('#newSale').hide();
+            $('#editSale').show();
+        }
+
+        function updateDiscountTable(e) {
+            discountTbl.clear();
+            let discount = $('#editDiscountInput').val();
+            let id = $('#id').val();
+            ajaxCall("PUT", "../api/sales/" + id, JSON.stringify(discount), updateSuccessCB, updateErorrCB);
+            e.preventDefault();
+
+        }
+
+        function updateSuccessCB(updatedDiscountList) {
+                alert('update success');
+                $('#editSale').hide();
+                redrawTable(discountTbl, updatedDiscountList);
+        }
+        function updateErorrCB() {
+            alert("update not success");
+        }
+
+        function deleteBtnFunction() {
+            let selectedRow = this.getAttribute('id');
+            ajaxCall("DELETE", "../api/sales/" + selectedRow, "", deleteSuccessCB, deleteErorrCB);
+        }
+
+        function deleteSuccessCB(updatedDiscountList) {
+            discountTbl.clear();
+            redrawTable(discountTbl, updatedDiscountList);
+
+        }
+        function deleteErorrCB(err) {
+            console.log(err);
+            alert('The deletion was not performed');
+        }
+
+        function redrawTable(discountTbl, updatedDiscountList) {
+            discountTbl.clear();
+            for (var i = 0; i < updatedDiscountList.length; i++) {
+                discountTbl.row.add(updatedDiscountList[i]);
+            }
+            discountTbl.draw();
+        }
+        //----------------------------------------------------------------------//
+
+        function openAddAdminDiv() {
+            $('#OrderDiv').hide();
+            $('#FavoriteDiv').hide();
+            $('#SalesDiv').hide();
+            $('#AddAdminDiv').show();
+            $('#addNewAdmin').submit(function (e) {
+                e.preventDefault();
+                newAdmin = {
+                    "UserName": $('#UserNameInput').val(),
+                    "UserPassword": $('#UserPasswordInput').val()
+                }
+                ajaxCall("POST", "../api/admin", JSON.stringify(newAdmin), addNewAdminSuccessCB, addNewAdminErorrCB)
+            })
+        }
+
+        function addNewAdminSuccessCB(numeffected) {
+            if (numeffected > 0) {
+                console.log("success")
+            }
+            else {
+                addNewAdminErorrCB("not success");
+            }
+        }
+        function addNewAdminErorrCB(err) {
+            console.log(err);
+        }
+
+        //----------------------------------------------------------------------//
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Igroup4 Search flight</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="../css/magnific-popup.css" rel="stylesheet" />
+    <link href="../css/aos.css" rel="stylesheet" />
+    <link href="../css/ionicons.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="../css/jquery.timepicker.css" rel="stylesheet" />
+    <link href="../css/flaticon.css" rel="stylesheet" />
+    <link href="../css/icomoon.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/myStyle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+
+</head>
+<body class="dontMoveY-axis">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a href="index.html"><img id="logoImage" src="../images/logo.jpg" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="favorite.html" class="nav-link">My favorite</a></li>
+                    <li class="nav-item cta"><a id="Admine" href="#" class="nav-link">Admin </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    <div class="bg-modal">
+        <div class="my-modal-content">
+            <form action="" id="logInForm">
+                <div class="logIn-popup-close">+</div>
+                <input type="text" id="userName" class="popup-input" placeholder="User name" pattern="[A-Za-z]+" required title="English letters only" />
+                <input type="text" id="userPassword" class="popup-input" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                <input type="submit" value="Log in" />
+            </form>
+        </div>
+    </div>
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('../images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+        <!--<div class="overlay"></div>-->
+    </div>
+    <!--search bar-->
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="searchBar" class="search-wrap-1 ftco-animate p-4">
+                        <form id="myForm" class="search-property-1">
+                            <div class="row">
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <label>From</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="ion-ios-search"></span></div>
+                                            <input type="text" id="from" class="form-control" placeholder="Select a country or city" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <label>To</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="ion-ios-search"></span></div>
+                                            <input type="text" id="to" class="form-control" placeholder="Select a country or city"  required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <label>Depart</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                            <input type="text" id="depart" class="form-control checkin_date" placeholder="Earliest date"  required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                        <label>Return</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                            <input type="text" id="return" class="form-control checkout_date" placeholder="Last date"  required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg align-self-end">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <input type="submit" value="Search" class="form-control btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of search bar-->
+    <!--result div-->
+
+    <section id="flightResult" class="ftco-section services-section bg-light">
+        <div id="tableDiv" class="container">
+            <!--<div class="row d-flex">-->
+            <button class="topOfThePage btn-secondary">Top of the page</button>
+            <table id="resultTable" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Line no</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+            <!--</div>-->
+        </div>
+        <div id="viewFlightCard" class="card">
+            <div class="card-body">
+                <h4 id="cardTitle" class="card-title"></h4>
+                <h6 id="cardPrice">Price:(&#8364)</h6>
+                <h6 id="cardRout">Rout:</h6>
+                <input type="button" class="btn-secondary cancleCardBtn" value="Cancle" />
+                <input type="button" id="orderBtn" class="btn-success orderBtn" value="order" />
+                <input type="button" id="AddToFavoriteBtn" class="btn-warning favoriteBtn" value="Add to favorite" />
+
+            </div>
+        </div>
+    </section>
+    <!--End of result div-->
+
+    <div class="order-modal">
+        <div class="order-popup">
+            <form action="" id="orderForm">
+                <div class="order-popup-close">+</div>
+                <input type="text" id="passngerName" class="popup-input" placeholder="Passnger name" pattern="[A-Za-z]+" required title="English letters only" />
+                <input id="passngerAdd" type="button" value="add" />
+                <input type="email" id="passngerMail" class="popup-input" placeholder="Passnger mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required title="example@example.com" />
+                <label>I have read and agree to the Terms of Use</label><input type="checkbox" required /><br />
+                <input type="submit" value="Finish order" />
+            </form>
+        </div>
+    </div>
+
+
+    <footer class="ftco-footer bg-bottom" style="background-image: url(../images/footer-bg.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Hayun's Group &reg;
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous">
+    </script>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../Scripts/popper.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery.easing.1.3.js"></script>
+    <script src="../Scripts/jquery.waypoints.min.js"></script>
+    <script src="../Scripts/jquery.stellar.min.js"></script>
+    <script src="../Scripts/owl.carousel.min.js"></script>
+    <script src="../Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="../Scripts/aos.js"></script>
+    <script src="../Scripts/jquery.animateNumber.min.js"></script>
+    <script src="../Scripts/bootstrap-datepicker.js"></script>
+    <script src="../Scripts/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false" />
+    <script src="../Scripts/google-map.js"></script>
+    <script src="../Scripts/main.js"></script>
+    <script src="../Scripts/sign-in-popup.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+
+        var allData = null;
+        var allAirports = [];
+        var allCitiesName = [];
+        var flightList = [];
+        var discountList = [];
+        var orderList = [];
+        //----------------------------------------------------------------------//
+
+        $(document).ready(function () {
+            $('body').removeClass('dontMoveY-axis');
+            $('#flightResult').hide();
+            $('#viewFlightCard').hide();
+            bringAllAirports();
+            bringAllCitiesName();
+            brintDiscountTable();
+            bringOrderTable();
+            $('#myForm').submit(checkingCode);
+            $('input[type=text]').keypress(function (e) {
+                var key = e.keyCode;
+                if (key >= 0 && key <= 47 || key >= 58 && key <= 64 || key >= 91 && key <= 96) {
+                    e.preventDefault();
+                }
+            })
+        })
+
+        //---------------------------------------------------------------------//
+
+
+        function bringAllAirports() {
+            ajaxCall("GET", "../api/airports", "", bringAllAirportSsuccessCB, bringAllAirportErrorCB);
+        }
+
+        function bringAllAirportSsuccessCB(data) {
+            for (let i in data) {
+                allAirports.push(data[i]);
+            }
+            $('#from').autocomplete({ source: allAirports });
+            $('#to').autocomplete({ source: allAirports });
+        }
+
+        function bringAllAirportErrorCB(err) {
+            console.log("error");
+
+        }
+
+        function bringAllCitiesName() {
+            url = "https://api.skypicker.com/locations?type=dump&locale=en-US&location_types=airport&limit=4000&active_only=true&sort=name";
+            $.get(url).done(successCB);
+            $.get(url).fail(errorCB);
+        }
+
+        function successCB(data) {
+            for (var i = 0; i < data.locations.length; i++) {
+                if (allCitiesName.includes(data.locations[i].city.name)) {
+                }
+                else {
+                    allCitiesName.push(data.locations[i].city.name);
+                }
+
+            }
+            $('#connectionTextBox').autocomplete({ source: allCitiesName });
+        }
+
+        function errorCB(err) {
+            console.log(err);
+        }
+
+
+        function brintDiscountTable() {
+            ajaxCall("GET", "../api/sales", "", brintDiscountTableSuccessCB, brintDiscountTableErorrCB);
+        }
+        function brintDiscountTableSuccessCB(data) {
+            for (let i in data) {
+                discountList.push(data[i]);
+            }
+        }
+
+        function brintDiscountTableErorrCB() {
+            alert("The discount table was not loaded");
+        }
+
+        function bringOrderTable() {
+            ajaxCall("GET", "../api/order", "", brintOrderTableSuccessCB, brintOrderTableErorrCB);
+        }
+        function brintOrderTableSuccessCB(data) {
+            for (let i in data) {
+                orderList.push(data[i]);
+            }
+        }
+        function brintOrderTableErorrCB() {
+            alert("The order table was not loaded");
+        }
+
+        function checkingCode(e) {
+            e.preventDefault();
+            let earlyDate = $('#depart').val().split("/").map(Number);
+            let lateDate = $('#return').val().split("/").map(Number);
+            if (earlyDate[2] <= lateDate[2] && earlyDate[0] <= lateDate[0] && earlyDate[1] <= lateDate[1]) {
+                search();
+            }
+            else {
+                alert('Return date is less than departure date');
+                return false;
+            }
+        }
+
+        function search() {
+            let origin = "";
+            let destenation = "";
+            let nameFrom = $('#from').val();
+            let nameTo = $('#to').val();
+
+            ajaxCall("GET", "../api/Airports/code/" + nameFrom.trim(), "", nameFromCodeSuccessCB, nameFromCodeErorrCB);
+
+            function nameFromCodeSuccessCB(airportCode) {
+                origin = airportCode;
+                ajaxCall("GET", "../api/Airports/code/" + nameTo.trim(), "", nameToCodeSuccessCB, nameToCodeErorrCB);
+            };
+            function nameFromCodeErorrCB(e) { console.log(e); alert('make sure you choose the Origin from the name list') };
+            function nameToCodeSuccessCB(airportCode) {
+                destenation = airportCode;
+                let tmpStartTime = $('#depart').val().split('/');
+                let startTime = tmpStartTime[1] + "/" + tmpStartTime[0] + "/" + tmpStartTime[2];
+                let tmpEndTime = $('#return').val().split('/');
+                let endTime = tmpEndTime[1] + "/" + tmpEndTime[0] + "/" + tmpEndTime[2];
+                let url = "https://api.skypicker.com/flights?flyFrom=" + origin + "&to=" + destenation + "&dateFrom=" + startTime + "&dateTo=" + endTime + "&partner=Ori";
+                ajaxCall("GET", url, "", getFlightSuccessCB, getFlightErrorCB);
+
+            };
+            function nameToCodeErorrCB() { alert('make sure you choose the destantion from the name list') };
+        }
+
+        function getFlightSuccessCB(data) {
+            $('#flightResult').show();
+            $('html, body').animate({
+                scrollTop: $("#flightResult").offset().top
+            }, 1500);
+
+            allData = data.data;
+            for (let f in allData) {
+                let rAa = "";
+                let from = allData[f].cityFrom;
+                let to = allData[f].cityTo;
+                let price = allData[f].conversion.EUR;
+                let tmpDate = new Date(allData[f].dTimeUTC * 1000)
+                tmpDate = tmpDate.toLocaleDateString();
+                let date = tmpDate;
+                for (index in allData[f].route) {
+
+                    rAa += `${allData[f].route[index].cityFrom}&nbsp;&#8594;&nbsp; ${allData[f].route[index].cityTo}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; by: ${allData[f].route[index].airline} airline<br /><br />`;
+                }
+
+                flight = {
+                    "id": f,
+                    "from": from,
+                    "to": to,
+                    "price": price,
+                    "date": date,
+                    "route": rAa,
+                    "airline": allData[f].route[0].airline
+                }
+
+                flightList.push(flight);
+            }
+            let saleString = "sale";
+            for (let i in discountList) {
+                for (let j in flightList) {
+                    if (flightList[j].airline == discountList[i].Airline && flightList[j].from == discountList[i].CityFrom && flightList[j].to == discountList[i].CityTo) {
+                        if (orderList.length==0) {
+                            flightList[j].price = flightList[j].price * ((100 - (discountList[i].Discount * 0.6)) / 100);
+                            flightList[j].price = flightList[j].price.toFixed(0);
+                            flightList[j].price += `<h6 style="color:red;">${saleString}</h6>`
+                        } else {
+                            for (let k in orderList) {
+                                if (flightList[j].airline == orderList[k].Airline && flightList[j].from == orderList[k].CityFrom && flightList[j].to == orderList[k].CityTo) {
+                                    flightList[j].price = flightList[j].price * ((100 - (discountList[i].Discount * 0.5)) / 100);
+                                    flightList[j].price = flightList[j].price.toFixed(0);
+                                    flightList[j].price += `<h6 style="color:red;">${saleString}</h6>`
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            try {
+                if (typeof (tbl) !== 'undefined') {
+                    flightList = [];
+                    tbl.destroy();
+                    search();
+                }
+                tbl = $('#resultTable').DataTable({
+                    data: flightList,
+                    pageLength: 5,
+                    columns: [
+                        { data: "id" },
+                        { data: "from" },
+                        { data: "to" },
+                        { data: "date" },
+                        { data: "price" },
+                        {
+                            render: function (data, type, row, meta) {
+                                let dataFlight = "data-flightId='" + row.id + "'";
+                                viewBtn = "<button type='button' class = 'viewBtn btn btn-info' " + dataFlight + "> View </button>";
+                                orderBtn = "<button type='button' class = 'orderBtn btn btn-success' " + dataFlight + "> Order </button>";
+                                addToFavoriteBtn = "<button type='button' class = 'favoriteBtn btn btn-warning' " + dataFlight + "> Add to favorite </button>";
+                                return viewBtn + " " + orderBtn + " " + addToFavoriteBtn;
+                            }
+                        }
+                    ],
+                });
+                buttonEvents();
+            } catch (err) {
+                alert(err);
+            }
+        }
+
+        function buttonEvents() {
+            $(document).on("click", ".viewBtn", function () {
+                $('#tableDiv').hide();
+                $('#viewFlightCard').show();
+                selectedRow = this.getAttribute('data-flightId');
+                $('#cardTitle').text(flightList[selectedRow].from + " --> " + flightList[selectedRow].to)
+                $('#cardPrice').html(`Price: ${flightList[selectedRow].price} \u20AC `);
+                $('#cardRout').html(`Route: <br/><br/> ${flightList[selectedRow].route}`)
+            })
+            $(document).on("click", ".cancleCardBtn", function () {
+                $('#tableDiv').show();
+                $('#viewFlightCard').hide();
+            })
+            $(document).on("click", ".topOfThePage", function () {
+                $("html, body").animate({
+                    scrollTop: $('#logo').height()
+                }, 1500);
+            })
+        }
+
+        function getFlightErrorCB() {
+            alert('Error , try againe')
+            location.reload();
+        }
+
+        $(document).on("click", ".favoriteBtn", function () {
+
+            $(this).prop('disabled', true);
+            var packArr = [];
+            let selectedRow = this.getAttribute('data-flightId');
+            pack = {
+                "Airline": flightList[selectedRow].airline,
+                "CityFrom": flightList[selectedRow].from,
+                "CityTo": flightList[selectedRow].to,
+                "NumOfLike": 1
+            }
+            if (localStorage['favorite']) {
+                packArr=(JSON.parse(localStorage['favorite']));
+            }
+            if (packArr.length==0) {
+                packArr.push(pack);
+            }
+            let favoriteCounter = 0;
+            for (var i = 0; i < packArr.length; i++) {
+                
+                if (packArr[i].Airline != pack.Airline || packArr[i].CityFrom != pack.CityFrom || packArr[i].CityTo != pack.CityTo) {
+                    favoriteCounter++;
+                }
+                if (favoriteCounter == packArr.length) {
+                    packArr.push(pack);
+                }
+            }
+            localStorage.setItem('favorite', JSON.stringify(packArr));
+            ajaxCall("POST", "../api/favorite", JSON.stringify(pack), postFavoriteSuccessCB, postFavoriteErorrCB)
+        })
+
+        function postFavoriteSuccessCB() {
+            alert("Add to Favorites succeeded")
+        }
+
+        function postFavoriteErorrCB() {
+            alert("Add to Favorites not succeeded")
+        }
+
+        var passangerList = [];
+        var orderBtnId = null;
+
+        $(document).on("click", ".orderBtn", function () {
+            $(this).prop('disabled', true);
+            passangerList = [];
+            $('.order-modal').css('display', 'flex');
+            orderBtnId = this.getAttribute('data-flightId');
+        })
+
+        $(document).on("click", ".order-popup-close", function () {
+            $(`button[data-flightid=${orderBtnId}]`).removeAttr('disabled');
+            $('.order-modal').css('display', 'none');
+        })
+
+        $('#passngerAdd').click(function () {
+            if ($('#passngerName').val() == "") {
+                alert("You have to choose at leat 1 passnger");
+                return;
+            }
+            $('#passngerName').removeAttr('required')
+            let name = $('#passngerName').val();
+            passangerList.push(name);
+            $('#passngerName').val('');
+        })
+
+        $('#orderForm').submit(function (e) {
+            if ($('#passngerName').val() != "") {
+                let name = $('#passngerName').val();
+                passangerList.push(name);
+            }
+            console.log(flightList);
+            console.log(orderBtnId);
+            order = {
+                "FlightDate": flightList[orderBtnId].date,
+                "MainMail": $('#passngerMail').val(),
+                "Airline": flightList[orderBtnId].airline,
+                "CityFrom": flightList[orderBtnId].from,
+                "CityTo": flightList[orderBtnId].to,
+                "PassngerNames": passangerList.toString()
+            }
+            ajaxCall("POST", "../api/order", JSON.stringify(order), postOrderSuccessCB, postOrderErrorCB);
+            e.preventDefault();
+            
+        })
+
+        function postOrderSuccessCB(numEffected) {
+            if (numEffected > 0) {
+                alert('post success');
+                $('.order-modal').css('display', 'none');
+                $("html, body").animate({
+                    scrollTop: $('#resultTable').height()
+                }, 1500);
+            }
+            else {
+                postOrderErrorCB();
+            }
+        }
+
+        function postOrderErrorCB(err) {
+            alert('post not success');
+        }
+
+
+    </script>
+
+
+</body>
+</html>
